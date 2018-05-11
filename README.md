@@ -38,6 +38,7 @@ Our project for IR Intro course (2018).
 
 	json
 	{
+		"id": "03000598",
 		"name": "apple iphone x, fully unlocked 5.8", 64 gb - silver",
 		"price": "$1,139.00 & free shipping",
 		"information": 
@@ -47,6 +48,7 @@ Our project for IR Intro course (2018).
 			...
 		},
 		...
+		"link": "https://www.amazon.com/gp/product/B075QN8NDJ/ref=s9_dcacsd_dcoop_bw_c_x_1_w"
 	}
 > 
 > - 建立数据库  
@@ -63,5 +65,10 @@ Our project for IR Intro course (2018).
 > - 返回有价值信息  
 对得到的文档进行排序
 
+### 建立索引
+
+采用了BSBI算法使用python程序来构建索引
+
+![BSBI](https://github.com/daren996/Information-Retrieval-System-for-Amazon-Products/blob/master/BSBI.png)
 
 
