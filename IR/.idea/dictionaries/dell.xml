@@ -2,6 +2,7 @@
   <dictionary name="dell">
     <words>
       <w>mysearch</w>
+      <w>stemmer</w>
     </words>
   </dictionary>
 </component>

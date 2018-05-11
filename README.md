@@ -67,8 +67,26 @@ Our project for IR Intro course (2018).
 
 ### 建立索引
 
-采用了BSBI算法使用python程序来构建索引
+采用了BSBI算法使用python程序来构建倒排索引，具体过程参照下图：
 
-![BSBI](https://github.com/daren996/Information-Retrieval-System-for-Amazon-Products/blob/master/BSBI.png)
+![](https://github.com/daren996/Information-Retrieval-System-for-Amazon-Products/blob/master/BSBI.png)
 
+这里我假定每一个doc都是有id的，我们称之为doc\_id。除此之外，还定义了一些其他的量，例如word\_id，以及：
+
+	self.word\_set = set()  # all words
+	self.word2id\_map = {}   # map : word -> word\_id
+	self.index = {}         # map & set : word\_id -> docs\_set
+	self.D = 0              # int : The total number of documents
+	self.W = 0              # int : The total number of words
+
+由于数据并不太多，目前假定内存是可以处理整个的index的。
+
+在构建索引表的时候，采用了外层diction、内层set的方式，原因是diction基于哈希表，查找速度超过list，而set的合并、删除、判断是否存在等操作效率更高。
+
+将索引表写入文件的时候使用了python的pickle库，将index、word_set、word2id_map，例如：
+
+        with open(conf.index_path, 'wb') as out_file:
+            out_file.write(pickle.dumps(self.index))
+
+代码在index.py里。
 
