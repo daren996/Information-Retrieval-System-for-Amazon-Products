@@ -1,3 +1,8 @@
+
+clean_rule = r'(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)|^rt | rt |\n'
+
+stopwords_file = "./stopwords/lang_stopwords.txt"
+
 data_ori_path = "./input/data_origin/"
 data_path = "./input/doc_data/"
 

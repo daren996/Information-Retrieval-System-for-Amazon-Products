@@ -4,6 +4,8 @@ The progress of indexing:
     2 Map all words to an id
     3 Get all documents belonging to each words and sort them
     4 Combine the sorted results of each part, and finally write them back to disk
+
+@author: Darren
 """
 
 import os
