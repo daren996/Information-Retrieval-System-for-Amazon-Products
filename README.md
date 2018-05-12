@@ -71,6 +71,10 @@ Our project for IR Intro course (2018).
 
 ![](https://github.com/daren996/Information-Retrieval-System-for-Amazon-Products/blob/master/BSBI.png)
 
+为了之后的查询操作，我们实际采用的是基于位置信息的倒排索引，参照下图：
+
+![](https://github.com/daren996/Information-Retrieval-System-for-Amazon-Products/blob/master/positional%20index.png)
+
 这里我假定每一个doc都是有id的，我们称之为doc\_id。除此之外，还定义了一些其他的量，例如word\_id，以及：
 
 	self.word\_set = set()  # all words
