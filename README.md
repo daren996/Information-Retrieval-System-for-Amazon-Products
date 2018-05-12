@@ -78,19 +78,28 @@ Our project for IR Intro course (2018).
 这里我假定每一个doc都是有id的，我们称之为doc\_id。除此之外，还定义了一些其他的量，例如word\_id，以及：
 
 	self.word\_set = set()  # all words
-	self.word2id\_map = {}   # map : word -> word\_id
-	self.index = {}         # map & set : word\_id -> docs\_set
+	self.word2id\_map = {}  # map : word -> word\_id
+	self.index = {}  		# map & set : word_id -> doc_id -> positions
 	self.D = 0              # int : The total number of documents
 	self.W = 0              # int : The total number of words
 
 由于数据并不太多，目前假定内存是可以处理整个的index的。
 
-在构建索引表的时候，采用了外层diction、内层set的方式，原因是diction基于哈希表，查找速度超过list，而set的合并、删除、判断是否存在等操作效率更高。
+构建单词表的时候，采用了set的方式，因为set的合并、删除、判断是否存在等操作效率更高。
+在构建索引表的时候，采用了两层dictionary的方式，原因是diction基于哈希表，查找速度超过list。
+我们自己定义了一个数据结构用来存储位置信息：
 
-将索引表写入文件的时候使用了python的pickle库，将index、word_set、word2id_map，例如：
+	class doc_position:
+    	def __init__(self, doc_id):
+    	    self.doc_id = int(doc_id)   # document's id
+    	    self.occur = 0     # the number of occurrences of this word
+    	    self.pos = set()         # position of each occurrence
 
-        with open(conf.index_path, 'wb') as out_file:
-            out_file.write(pickle.dumps(self.index))
+将索引表写入文件的时候使用了python的pickle库，将index、word\_set、word2id\_map序列化后存放在文件中，并用zlib对索引文件进行了压缩，例如：
+
+	with open(conf.index_path, 'wb') as out_file:
+		out_file.write(pickle.dumps(self.index))
+		compress(conf.index_path, conf.index_path)
 
 代码在index.py里。
 
