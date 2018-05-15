@@ -18,17 +18,15 @@ Our project for IR Intro course (2018).
 
 
 
-> 1. 系统支持组合查询语句，该语句包含两个或多个以“OR”或“AND”连接的单词（例 如 “movie” AND “good”、“movie” OR “TV”）。系统无需支持同时包含“AND”和“OR” 的查询语句，例如(“good” OR “bad”) AND “movie”。 
+> 1. 系统支持短语（包含两个或多个单词）查询，例如“good movie”。
 > 
-> 2. 系统支持短语（包含两个或多个单词）查询，例如“good movie”。 
+> 2. 系统能够对搜索到的文件与查询语句之间的关联度进行分析与排序，并按照关联度排序 （降序）显示搜索到的文件。 
 > 
-> 3. 系统能够对搜索到的文件与查询语句之间的关联度进行分析与排序，并按照关联度排序 （降序）显示搜索到的文件。 
+> 3. 系统能够支持一些更高级的用户交互功能（例如：系统在显示搜索结果时除了显示文件 名外，还显示文件内容，并将被查询的词汇以特殊的方式标出）。 
 > 
-> 4. 系统能够支持一些更高级的用户交互功能（例如：系统在显示搜索结果时除了显示文件 名外，还显示文件内容，并将被查询的词汇以特殊的方式标出）。 
+> 4. 系统能够让用户指定一个需排除的词汇列表，这些词汇在创建反向索引时不被检索。 
 > 
-> 5. 系统能够让用户指定一个需排除的词汇列表，这些词汇在创建反向索引时不被检索。 
-> 
-> 6. 其他能够提升索引与搜索质量的功能。
+> 5. 其他能够提升索引与搜索质量的功能。
 
 ### 步骤：
 
@@ -38,8 +36,9 @@ Our project for IR Intro course (2018).
 
 	json
 	{
-		"id": "03000598",
+		"id": 103000598,
 		"name": "apple iphone x, fully unlocked 5.8", 64 gb - silver",
+		"category": ""
 		"price": "$1,139.00 & free shipping",
 		"information": 
 		{
@@ -67,7 +66,7 @@ Our project for IR Intro course (2018).
 
 ### 建立索引
 
-采用了BSBI算法使用python程序来构建倒排索引，具体过程参照下图：
+构建倒排索引，具体过程参照下图：
 
 ![](https://github.com/daren996/Information-Retrieval-System-for-Amazon-Products/blob/master/BSBI.png)
 
@@ -102,4 +101,37 @@ Our project for IR Intro course (2018).
 		compress(conf.index_path, conf.index_path)
 
 代码在index.py里。
+
+### 搜索
+
+基于查询Q、文档D和文档集合C的相关度计算，相关度R=f(Q,D,C)
+
+已经实现了二元临近词查询，在交互界面上表现为支持双引号的短语查询。
+
+在此基础上准备实现查询扩展与查询重构：
+
+- **查询扩展**(Query Expansion)： 利用同义词或者近义词对查询进行扩展
+- **查询重构**(Query Reconstruction)： 利用用户的相关反馈信息对查询进行修改
+
+以及实现基于同义词表的容错式检索
+
+### 爬虫
+
+首先，使用scrapy模块爬取了5月15日的Amazon Best Sellers榜单，按照类别每种爬取了100个商品，并将其直接保存在了json中。
+我使用的网站是https://www.amazon.com/Best-Sellers/zgbs/ref=zg_bs_tab。
+代码在SPIDER/amazon中。
+
+分类是按照两级分类：
+
+	 - Amazon Devices & Accessories
+    	 - Amazon Devices
+    	 - Amazon Device Accessories
+	 - Amazon Launchpad	
+    	 - Body
+    	 - Food
+    	 - Gadgets
+    	 - House
+    	 - Toys
+	 - Appliances
+	  ...
 

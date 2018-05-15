@@ -24,7 +24,7 @@ def read_stopwords():
 
 
 def process(text, stemmer, stopwords):
-    new_text = (re.sub(conf.clean_rule, " ", text))
+    new_text = re.sub(conf.clean_rule, "", text)
     words = [stemmer.stem(word) for word in new_text.split()
              if word not in stopwords and len(word) > 1]
     words_no_stop = [word.lower() for word in words if word.lower() not in stopwords]
