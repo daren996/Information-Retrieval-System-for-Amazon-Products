@@ -13,5 +13,6 @@ class AmazonPipeline(object):
             obj = {}
             obj['name'] = item['name']
             obj['url'] = item['url']
+            obj['cat'] = item['cat']
             item_json = json.dumps(obj)
             fp.write(item_json + '\n')
