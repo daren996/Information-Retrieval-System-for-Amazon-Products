@@ -102,9 +102,27 @@ Our project for IR Intro course (2018).
 
 代码在index.py里。
 
-### 搜索
+### 搜索程序
 
-基于查询Q、文档D和文档集合C的相关度计算，相关度R=f(Q,D,C)
+search.py中是搜索程序，可以加入函数实现自己的搜索算法。其中包含Search类，只有一个类变量：self.index\_arr，这是一个index数组
+
+index的格式是双层字典：word\_id -> doc\_id -> positions，即：index[word\_id][doc\_id] = doc\_position
+
+doc_position的定义在util.py中.
+	
+在类中可以创建自己的函数：
+
+	def other_method(self):
+        pass
+
+在main中可以运行自己的算法，注意修改以下部分：
+
+    search = Search(index_arr)
+    result = search.your_algorithm(your_parameters)
+
+### 搜索算法
+
+搜索是基于查询Q、文档D和文档集合C的相关度计算，相关度R=f(Q,D,C)
 
 已经实现了二元临近词查询，在交互界面上表现为支持双引号的短语查询。
 
@@ -135,3 +153,17 @@ Our project for IR Intro course (2018).
 	 - Appliances
 	  ...
 
+爬取的json数据格式为：
+
+	{
+		"title": "Gaiam Kids Stay-N-Play Children's Balance Ball", 
+		"cat": 
+		{
+			"1": "Sports & Outdoors", 
+			"2": "Sports & Fitness"
+		}, 
+		"price": "$17.90 - $46.99", 
+		"star": "3.5 out of 5 stars", 
+		"reviewers": "355 customer reviews", 
+		"questions": "28 answered questions"
+	}

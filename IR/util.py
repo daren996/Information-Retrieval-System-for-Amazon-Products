@@ -4,7 +4,6 @@ Utilities
     2 Data structure of position information
     3 Compress and Decompress program
 
-@author: Darren
 """
 
 import zlib

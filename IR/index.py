@@ -22,7 +22,7 @@ class Index:
     def __init__(self):
         self.word_set = set()  # all words
         self.word2id_map = {}  # map : word -> word_id
-        self.index = {}  # map & set : word_id -> doc_id -> positions  index[word_id][doc_id] = doc_position
+        self.index = {}  # two level map : word_id -> doc_id -> positions  index[word_id][doc_id] = doc_position
         self.D = 0  # int : The total number of documents
         self.W = 0  # int : The total number of words
         self.doc_files = []  # list of doc files' name
