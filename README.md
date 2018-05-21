@@ -1,5 +1,7 @@
 # Information-Retrieval-System-for-Amazon-Products
-Our project for IR Intro course (2018). 
+
+**Our project for IR Intro course (2018).** 
+**Team members: Siqi, Sibei**
 
 **Attention: Download input file from following link if you wanna run this program :**
 **https://pan.baidu.com/s/1jWJ9FVVLAHSJ5BoBCFtyYA** 
@@ -209,3 +211,12 @@ P(w|c) 的含义是，在试图拼写 c 的情况下，出现拼写错误 w 的�
 		"reviewers": "355 customer reviews", 
 		"questions": "28 answered questions"
 	}
+
+## 还未完成的工作
+
+ - UI设计与接口搭建
+ - 爬取更多的数据
+ - 基于WordNet实现同义词查询
+ - 编写其他查询、排序方法
+ - 编写基于用户信息的推荐程序
+ - 编写算法评价程序
