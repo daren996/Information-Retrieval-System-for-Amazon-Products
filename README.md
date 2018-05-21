@@ -1,6 +1,9 @@
 # Information-Retrieval-System-for-Amazon-Products
 Our project for IR Intro course (2018). 
 
+**Attention: Download input file from following link if you wanna run this program :**
+**https://pan.baidu.com/s/1jWJ9FVVLAHSJ5BoBCFtyYA** 
+
 ---
 
 ### 基本要求：
