@@ -128,10 +128,10 @@ doc_position的定义在util.py中.
 
 在此基础上准备实现查询扩展与查询重构：
 
-- **查询扩展**(Query Expansion)： 利用同义词或者近义词对查询进行扩展
+- 基于贝叶斯推断的**拼写纠正**(Spelling Correction)算法
+- **查询扩展**(Query Expansion)： 利用同义词或者近义词对查询进行扩展，基于wordNet
 - **查询重构**(Query Reconstruction)： 利用用户的相关反馈信息对查询进行修改
-
-以及实现基于同义词表的容错式检索
+- 对于**通配符查询**(Wildcard Query)问题，可以采用k-gram方法进行解决，但是通配符查询在这里用处不大，因此没有进行实现
 
 ### 拼写纠正
 
