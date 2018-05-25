@@ -23,6 +23,7 @@ class Index:
         self.word_set = set()  # all words
         self.word2id_map = {}  # map : word -> word_id
         self.index = {}  # two level map : word_id -> doc_id -> positions  index[word_id][doc_id] = doc_position
+        self.doc_length = {}  # map : doc_id -> length of this doc
         self.D = 0  # int : The total number of documents
         self.W = 0  # int : The total number of words
         self.doc_files = []  # list of doc files' name
@@ -49,6 +50,7 @@ class Index:
                     doc_id = obj['id']
                     pos = 0
                     text_split = text.split(' ')
+                    self.doc_length[doc_id] = len(text_split)
                     for w in text_split:
                         pos += 1
                         if w not in self.word_set:
@@ -69,15 +71,19 @@ class Index:
             out_file.write(pickle.dumps(self.word2id_map))
         with open(conf.index_path + ".decompress", 'wb') as out_file:
             out_file.write(pickle.dumps(self.index))
+        with open(conf.doc_length_path + ".decompress", 'wb') as out_file:
+            out_file.write(pickle.dumps(self.doc_length))
         with open(conf.D_path + ".decompress", 'wb') as out_file:
             out_file.write(pickle.dumps(self.D))
         util.compress(conf.word_set_path + ".decompress", conf.word_set_path)
         util.compress(conf.word2id_map_path + ".decompress", conf.word2id_map_path)
         util.compress(conf.index_path + ".decompress", conf.index_path)
+        util.compress(conf.doc_length_path + ".decompress", conf.doc_length_path)
         util.compress(conf.D_path + ".decompress", conf.D_path)
         os.remove(conf.word_set_path + ".decompress")
         os.remove(conf.word2id_map_path + ".decompress")
         os.remove(conf.index_path + ".decompress")
+        os.remove(conf.doc_length_path + ".decompress")
         os.remove(conf.D_path + ".decompress")
         print("Write index to file successfully.")
 
@@ -85,6 +91,7 @@ class Index:
         util.decompress(conf.word_set_path, conf.word_set_path + ".decompress")
         util.decompress(conf.word2id_map_path, conf.word2id_map_path + ".decompress")
         util.decompress(conf.index_path, conf.index_path + ".decompress")
+        util.decompress(conf.doc_length_path, conf.doc_length_path + ".decompress")
         util.decompress(conf.D_path, conf.D_path + ".decompress")
         with open(conf.word_set_path + ".decompress", 'rb') as input_file:
             self.word_set = pickle.loads(input_file.read())
@@ -92,12 +99,15 @@ class Index:
             self.word2id_map = pickle.loads(input_file.read())
         with open(conf.index_path + ".decompress", 'rb') as input_file:
             self.index = pickle.loads(input_file.read())
+        with open(conf.doc_length_path + ".decompress", 'rb') as input_file:
+            self.doc_length = pickle.loads(input_file.read())
         with open(conf.D_path + ".decompress", 'rb') as input_file:
             self.D = pickle.loads(input_file.read())
         self.W = len(self.word_set)
         os.remove(conf.word_set_path + ".decompress")
         os.remove(conf.word2id_map_path + ".decompress")
         os.remove(conf.index_path + ".decompress")
+        os.remove(conf.doc_length_path + ".decompress")
         os.remove(conf.D_path + ".decompress")
         print("Load index from file successfully.")
 

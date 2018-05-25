@@ -129,7 +129,9 @@ doc_position的定义在util.py中.
 
 搜索是基于查询Q、文档D和文档集合C的相关度计算，相关度R=f(Q,D,C)
 
-已经实现了二元临近词查询，在交互界面上表现为支持双引号的短语查询。
+已经实现了二元临近词查询，在交互界面上表现为支持双引号的短语查询
+
+也实现了基于tf-idf的文档评分方法改进的搜算算法
 
 在此基础上准备实现查询扩展与查询重构：
 
@@ -177,6 +179,59 @@ P(c) 的含义是，某个正确的词的出现"概率"，它可以用"频率"�
 
 P(w|c) 的含义是，在试图拼写 c 的情况下，出现拼写错误 w 的概率。这需要统计数据的支持，但是为了简化问题，我们假设两个单词在字形上越接近，就有越可能拼错，P(w|C) 就越大。举例来说，相差一个字母的拼法，就比相差两个字母的拼法，发生概率更高。你想拼写单词 hello，那么错误拼成 hallo（相差一个字母）的可能性，就比拼成 haallo 高（相差两个字母）。
 
+### 基于tf-idf权重改进的查询以及文档评分(原创)
+
+tf-idf是常用的词权重的计算方法
+
+	tf = number of occurrences of a word in an article / total number of articles
+    idf = log (the total number of documents in corpus / (number of documents containing the word + 1)
+
+统方法对文档评分使用的是
+
+	score = Σ(each query word in this doc)(tf-idf weight of specific word)
+
+我发现如果单纯的使用tf-idf作为权重，最后得到的评分不一定能够很好的适应我们当前的场景。主要是以下两个问题：
+
+ - 用户其实更希望的是尽可能多覆盖所有的关键词，而这里可能会使得只覆盖部分权重过高关键词的文档评分过高
+ - 文档中尽可能多出现关键词的意义不是特别大
+
+因此我们针对这些问题对方法做了一些改进：
+
+ - 优先返回覆盖了所有关键词的文档
+ - 如果这些文档没有达到预定义值k个，那么对剩余的文档进行基于tf-idf权重的评分
+
+结果出奇的不错，不仅解决了上述问题，而且使得排名更偏向于用户希望的结果，算法描述如下：
+
+	Query: list of words
+	Get score of each document:
+		score[doc_id] = Σ(all query words in this doc)(tf-idf weight of specific word)
+	Get max score from all docs: max_score
+	Get the number of query words covered by each doc: covered_words
+	For each docs' scores: 
+		score[doc_id] = score[doc_id] + max_score * covered_words[doc_id]
+	sort score array by score of each doc 
+	result = score[0:k], k is the number of results returned
+
+代码在search.py.Search.tf_idf_arrange
+
+### 基于簇以及余弦相似度的查询扩展算法(原创)
+
+在查询中我们可能会遇到一些问题，比如：
+
+ - 根据关键词返回的结果项的数目并不能达到要求，需要进行结果扩展
+ - 用户得到的结果的种类过于繁杂，可以进行分类重现
+
+如下图，我们的文档已经具有的类别，因此我们可以在每个簇中应用余弦相似度进行结果扩展，这里我们提出了自己解决这些问题的算法：
+
+1. 首先通过一般查询得到一个结果集合，同时得到这些结果的所属类别(在我们的项目中就是亚马逊网站为其标注的所属类别)
+2. 我们给定这里出现的每一种类别一个权重：w_category = frequency of the category
+3. 通过每个类别的权重，确定从每个类别中衍生出的文档数目
+4. 针对每个类别的结果集合，计算其中所有文档对应查询结果文档的余弦相似度：这里的余弦相似度不同于一般的向量之间的相似度，由于结果集合是多个文档，因此我们通过每个词语的频率给定其权重，之后再计算余弦相似度
+
+由于算法中基于文档类别(簇)，我们需要提前保存好文档的簇信息，这里使用不同的文件进行保存，使用索引对类别进行表示
+
+代码在search.py.Search.cluster_extend
+
 ## 爬虫
 
 首先，使用scrapy模块爬取了5月15日的Amazon Best Sellers榜单，按照类别每种爬取了100个商品，并将其直接保存在了json中。
@@ -217,21 +272,7 @@ P(w|c) 的含义是，在试图拼写 c 的情况下，出现拼写错误 w 的�
  - UI设计与接口搭建 CSB
  - 爬取更多的数据 JSQ
  - 基于WordNet实现同义词查询 JSQ
- - 编写其他查询、排序方法 CDR
+ - 编写其他查询、排序方法 CDR **(FINISHED)**
  - 编写基于用户信息的推荐程序 CSB
  - 编写算法评价程序 CDR
-
-## 基于tf-idf权重的查询以及文档评分
-
-我发现如果单纯的使用tf-idf作为权重，最后得到的评分不一定能够很好的适应我们当前的场景。主要是以下两个问题：
-
- - 用户其实更希望的是尽可能多覆盖所有的关键词，而这里可能会使得只覆盖部分权重过高关键词的文档评分过高
- - 文档中尽可能多出现关键词的意义不是特别大
-
-因此我们针对这些问题对方法做了一些改进：
-
- - 优先返回覆盖了所有关键词的文档
- - 如果这些文档没有达到预定义值k个，那么对剩余的文档进行基于tf-idf权重的评分
-
-结果出奇的不错，不仅解决了上述问题，而且使得排名更偏向于用户希望的结果
 
