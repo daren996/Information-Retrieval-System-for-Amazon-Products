@@ -276,3 +276,235 @@ tf-idf是常用的词权重的计算方法
  - 编写基于用户信息的推荐程序 CSB
  - 编写算法评价程序 CDR
 
+## 信息检索系统的评价
+
+准确率（Precision）是返回的结果中相关文档所占的比例
+
+召回率（Recall）是返回的相关文档占所有相关文档的比例
+
+F1值：F=2PR/(P+R)
+
+响应时间：从用户送交提问到收到检索结果所花的时间
+
+## 建立网站服务端
+
+Web应用框架使用了Django
+</p>Django采用了MVC的软件设计模式，即模型M，视图V和控制器C，是一个开放源代码的Web应用框架，由Python写成。</p> 
+
+### 安装Django
+
+	$ pip install Django==2.0.5
+
+将下述路径加入到环境变量中：
+
+	(Python)\Lib\site-packages\django
+	(Python)\Scripts
+
+### 创建Django项目
+
+	$ django-admin startproject HelloWorld
+
+启动服务器的方式：
+
+	$ python manage.py runserver 127.0.0.1:8000
+
+浏览器直接访问下述地址即可
+
+	127.0.0.1:8000/xxx
+
+### 管理Django项目
+
+视图 **view.py**：
+
+	from django.http import HttpResponse
+	from django.shortcuts import render
+	def hello(request):
+    	return HttpResponse("Hello world!")
+	def hello2(request):
+    	context = {}
+    	context['hello'] = 'Hello World!'
+    	return render(request, 'hello.html', context)
+
+**urls.py** 文件：
+
+	from django.conf.urls import url
+	from . import view
+	urlpatterns = [url(r'^$', view.hello), url(r'^hello$', view.hello2),]
+
+url()函数可以接收四个参数，分别是两个必选参数：regex、view 和两个可选参数：kwargs、name：
+
+    regex: 正则表达式，与之匹配的 URL 会执行对应的第二个参数 view。
+    view: 用于执行与正则表达式匹配的 URL 请求。
+    kwargs: 视图使用的字典类型的参数。
+    name: 用来反向获取 URL。
+
+### 使用Django模板Templates
+
+建立一个templates文件夹，其中放html模板。
+之后在 **setting.py** 中进行一些设置：
+
+	...TEMPLATES = [
+    	{
+    	    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    	    'DIRS': [BASE_DIR+"/templates",],       # 修改位置
+    	    'APP_DIRS': True,
+    	    'OPTIONS': {
+    	        'context_processors': [
+    	            'django.template.context_processors.debug',
+    	            'django.template.context_processors.request',
+    	            'django.contrib.auth.context_processors.auth',
+    	            'django.contrib.messages.context_processors.messages',
+    	        ],
+    	    },
+    	},
+	]
+	...	
+
+模板的其他标签比如条件、循环、过滤器、继承、包含等可以自行查阅文档。
+
+### 使用Django模型Models
+
+在 **setting.py** 中可以设置模型：
+
+	DATABASES = {
+	    'default': {
+	        'ENGINE': 'django.db.backends.sqlite3',
+	        'NAME': os.path.join(BASE_DIR, 'db.sqlite'),
+		}
+	}
+
+这里我们使用了sqlite3数据库。Django规定，如果要使用模型，必须要创建一个app。我们使用以下命令创建一个 TestModel 的 app:
+
+	django-admin.py startapp TestModel
+
+在 **models.py** 中可以设置表格的名称、属性等：
+
+	from django.db import models 
+	class Test(models.Model):
+    	name = models.CharField(max_length=20)
+
+在 **settings.py** 中找到 INSTALLED_APPS 这一项，添加我们的app：
+
+	'TestModel',
+
+创建和更改表结构时，使用如下语句：
+
+	$ python manage.py makemigrations TestModel  # 让 Django 知道我们在我们的模型有一些变更
+	$ python manage.py migrate TestModel   # 创建表结构
+
+接下来可以在视图中使用数据库：
+
+	from django.http import HttpResponse
+	from TestModel.models import Test
+	def testdb(request):
+	    test1 = Test(name='runoob')
+	    test1.save()
+    	return HttpResponse("<p>数据添加成功！</p>")
+
+并将改视图命名为 **testdb.py** 添加到 **url.py** 中，就可以进行访问了：
+
+	url(r'^testdb$', testdb.testdb),
+
+其他数据库的一些操作，比如查询、更改、删除可以自行查文档，这里不再赘述。
+
+### 使用Django进行简单交互
+
+#### GET 方法
+
+在视图中定义如下函数：
+
+	def search(request):  
+    	request.encoding='utf-8'
+    	if 'q' in request.GET:
+    	    message = '你搜索的内容为: ' + request.GET['q']
+    	else:
+    	    message = '你提交了空表单'
+    	return HttpResponse(message)
+
+并将其都添加到 **url.py** 中。
+</p> html 中的代码是下述格式：</p> 
+
+	<form action="/search" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="搜索">
+    </form>
+
+#### POST 方法
+
+post方法在 html 代码中如下：
+
+	<form action="/search-post" method="post">
+        {% csrf_token %}
+        <input type="text" name="q">
+        <input type="submit" value="Submit">
+    </form>
+	<p>{{ rlt }}</p>
+
+视图中定义函数：
+
+	def search_post(request):
+    	ctx ={}
+		if request.POST:
+        	ctx['rlt'] = request.POST['q']
+    	return render(request, "post.html", ctx)
+
+除此之外，Request 还有其他的很多用法，有兴趣的话可以查询文档。
+
+### 管理工具
+
+在 **url.py** 中添加下述内容：
+
+	from django.contrib import admin
+	urlpatterns = [..., url(r'^admin/', admin.site.urls),]
+
+通过下述命令来创建超级用户：
+
+	$ python manage.py createsuperuser 
+
+为了让 admin 界面管理某个数据模型，首先要注册该数据模型，修改模型中的 **admin.py** ：
+
+	from django.contrib import admin
+	from TestModel.models import Test
+	admin.site.register(Test)
+
+注意更改了模型之后需要重新进行migrate。
+
+可以更改管理表单的内容，修改 **admin.py**：
+
+	class TagInline(admin.TabularInline):
+    	model = Tag
+	class ContactAdmin(admin.ModelAdmin):
+    	list_display = ('name','age', 'email') 
+		search_fields = ('name',)
+    	inlines = [TagInline]  # Inline
+    	fieldsets = (
+    	    ['Main',{
+    	        'fields':('name','email'),
+    	    }],
+    	    ['Advance',{
+    	        'classes': ('collapse',),
+    	        'fields': ('age',),
+    	    }]
+    	)
+	admin.site.register(Contact, ContactAdmin)
+
+由于这次项目的重点不在于web服务器，于是对于后台管理的实现并不太多。
+
+**注意：**
+
+1 如果不能访问，报400错误。
+可能是因为没有开启允许访问，编辑HelloWorld目录下setting.py ，把其中的
+ALLOWED\_HOSTS=[]改成ALLOWED_HOSTS=['\*']。
+
+2 如果因为中文无法解析的话，可以添加下述代码：
+ 
+
+	import sys  
+	reload(sys)
+	sys.setdefaultencoding('utf8')
+
+
+
+----------
+
+**@ Taishan College, Shandong University**
