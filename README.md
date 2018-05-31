@@ -391,8 +391,9 @@ url()函数可以接收四个参数，分别是两个必选参数：regex、view
 
 创建和更改表结构时，使用如下语句：
 
+	$ python manage.py migrate  # 创建表结构
 	$ python manage.py makemigrations TestModel  # 让 Django 知道我们在我们的模型有一些变更
-	$ python manage.py migrate TestModel   # 创建表结构
+	$ python manage.py migrate TestModel  # 复制表结构
 
 接下来可以在视图中使用数据库：
 
