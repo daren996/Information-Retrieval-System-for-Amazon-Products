@@ -235,7 +235,7 @@ tf-idf是常用的词权重的计算方法
 ## 爬虫
 
 首先，使用scrapy模块爬取了5月15日的Amazon Best Sellers榜单，按照类别每种爬取了100个商品，并将其直接保存在了json中。
-我使用的网站是https://www.amazon.com/Best-Sellers/zgbs/ref=zg_bs_tab。
+我使用的网站是https://www.amazon.com/Best-Sellers/zgbs/ref=zg_bs_tab
 代码在SPIDER/amazon中。
 
 分类是按照两级分类：
@@ -291,7 +291,8 @@ F1值：F=2PR/(P+R)
 Web应用框架使用了Django
 
 Django采用了MVC的软件设计模式，即模型M，视图V和控制器C，是一个开放源代码的Web应用框架，由Python写成。
-</p>相关文档在： [https://docs.djangoproject.com/en/1.11/](https://docs.djangoproject.com/en/1.11/ "Django")
+</p>相关文档在： 
+**https://docs.djangoproject.com/en/1.11**
 
 ### 安装Django
 
