@@ -1,5 +1,5 @@
 #
-IR/
-SPIDER/
-.idea/
+./IR/
+./SPIDER/
+./.idea/
 __init__.py
