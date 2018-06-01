@@ -291,7 +291,7 @@ F1值：F=2PR/(P+R)
 Web应用框架使用了Django
 
 Django采用了MVC的软件设计模式，即模型M，视图V和控制器C，是一个开放源代码的Web应用框架，由Python写成。
-</p>相关文档在： **https://docs.djangoproject.com/en/1.11/**
+</p>相关文档在： [https://docs.djangoproject.com/en/1.11/](https://docs.djangoproject.com/en/1.11/ "Django")
 
 ### 安装Django
 
