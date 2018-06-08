@@ -212,7 +212,7 @@ tf-idf是常用的词权重的计算方法
 	sort score array by score of each doc 
 	result = score[0:k], k is the number of results returned
 
-代码在search.py.Search.tf_idf_arrange
+代码在search.py.Search.tf\_idf\_arrange
 
 ### 基于簇以及余弦相似度的查询扩展算法(原创)
 
@@ -231,6 +231,28 @@ tf-idf是常用的词权重的计算方法
 由于算法中基于文档类别(簇)，我们需要提前保存好文档的簇信息，这里使用不同的文件进行保存，使用索引对类别进行表示
 
 代码在search.py.Search.cluster_extend
+
+### 基于商品星级的查询算法(原创)
+
+传统排名算法中没有考虑商品的星级属性。
+
+亚马逊会给所有商品一个星级(1~5stars)，这是根据用户打分取平均值得到的，可以用来评判商品的好坏，我们在数据库中会存储这个值。
+
+我们将商品的星级作为其中的一个特征，根据商品名称的相关性、覆盖单词数目、星级共同影响一个商品的得分
+
+	Query: list of words
+	Get score of each document:
+    	score[doc_id] = Σ(all query words in this doc)(tf-idf weight of specific word)
+	Get max score from all docs: max_score
+	Get the number of query words covered by each doc: covered_words
+	For each docs' scores: 
+	    score[doc_id] =	score[doc_id] + 
+						max_score * (covered_words[doc_id] / all_words) + 
+						max_score * (star[dic_id] / 5)
+	sort score array by score of each doc 
+	result = score[0:k], k is the number of results returned
+
+代码在search.py.Search.star_arrange
 
 ## 爬虫
 
@@ -267,14 +289,6 @@ tf-idf是常用的词权重的计算方法
 		"questions": "28 answered questions"
 	}
 
-## 还未完成的工作
-
- - UI设计与接口搭建 CSB
- - 爬取更多的数据 JSQ
- - 基于WordNet实现同义词查询 JSQ
- - 编写其他查询、排序方法 CDR **(FINISHED)**
- - 编写基于用户信息的推荐程序 CSB
- - 编写算法评价程序 CDR
 
 ## 信息检索系统的评价
 
@@ -285,6 +299,7 @@ tf-idf是常用的词权重的计算方法
 F1值：F=2PR/(P+R)
 
 响应时间：从用户送交提问到收到检索结果所花的时间
+
 
 ## 建立网站服务端
 
@@ -507,6 +522,8 @@ ALLOWED\_HOSTS=[]改成ALLOWED_HOSTS=['\*']。
 	reload(sys)
 	sys.setdefaultencoding('utf8')
 
+
+## UI设计与接口搭建
 
 
 ----------
