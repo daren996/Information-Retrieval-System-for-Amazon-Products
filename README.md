@@ -247,8 +247,8 @@ tf-idf是常用的词权重的计算方法
 	Get the number of query words covered by each doc: covered_words
 	For each docs' scores: 
 	    score[doc_id] =	score[doc_id] + 
-						max_score * (covered_words[doc_id] / all_words) + 
-						max_score * (star[dic_id] / 5)
+				max_score * (covered_words[doc_id] / all_words) + 
+				max_score * (star[dic_id] / 5)
 	sort score array by score of each doc 
 	result = score[0:k], k is the number of results returned
 
