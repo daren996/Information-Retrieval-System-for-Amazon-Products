@@ -1,7 +1,7 @@
 # Information-Retrieval-System-for-Amazon-Products
 
 **Our project for IR Intro course (2018).** 
-**Team members: Siqi, Sibei**
+**Team members: Siqi Jiang, Sibei Chen**
 
 **Attention: Download input file from following link if you wanna run this program :**
 **https://pan.baidu.com/s/1jWJ9FVVLAHSJ5BoBCFtyYA** 
@@ -253,6 +253,8 @@ tf-idf是常用的词权重的计算方法
 	result = score[0:k], k is the number of results returned
 
 代码在search.py.Search.star_arrange
+
+### 
 
 ## 爬虫
 
