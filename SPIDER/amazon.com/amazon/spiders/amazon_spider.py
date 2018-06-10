@@ -11,11 +11,11 @@ class AmazonSpider(scrapy.Spider):
     # the first url
     allowed_domains = ['amazon.com']
     start_urls = [
-        "https://www.amazon.com/Baby-Clothing-Shoes/b/ref=sd_allcat_sft_baby?ie=UTF8&node=7147444011"]
-        #"https://www.amazon.com/Mens-Fashion/b/ref=sv_sl_1?ie=UTF8&node=7147441011"]
+        # "https://www.amazon.com/Baby-Clothing-Shoes/b/ref=sd_allcat_sft_baby?ie=UTF8&node=7147444011"]
+        # "https://www.amazon.com/Mens-Fashion/b/ref=sv_sl_1?ie=UTF8&node=7147441011"]
         # "https://www.amazon.com/Womens-Fashion/b/ref=sv_sl_0?ie=UTF8&node=7147440011"]
         # "https://www.amazon.com/Girls-Fashion/b/ref=sv_sl_2?ie=UTF8&node=7147442011"]
-        # "https://www.amazon.com/Boys-Fashion/b/ref=sv_sl_3?ie=UTF8&node=7147443011"]
+        "https://www.amazon.com/Boys-Fashion/b/ref=sv_sl_3?ie=UTF8&node=7147443011"]
     count = 0
 
     # def parse4(self, response):
@@ -43,12 +43,11 @@ class AmazonSpider(scrapy.Spider):
         price = response.xpath("//span[@id='priceblock_ourprice']/text()").extract()[0].strip()
         star = response.xpath("//div[@id='averageCustomerReviews']//span[@class='a-icon-alt']/text()").extract()
         description = response.xpath("//*[@id='feature-bullets']/ul/li/span[@class='a-list-item']/text()").extract()
-        Product_description = response.xpath("//*[@id='productDescription']/p/text()").extract()
+        product_description = response.xpath("//*[@id='productDescription']/p/text()").extract()
         details = response.xpath("//*[@id='detailBullets_feature_div']/ul/li/span[@class='a-list-item']/span[@class='a-text-bold']/text()").extract()
         details1 = response.xpath("//*[@id='detailBullets_feature_div']/ul/li/span[@class='a-list-item']/span").extract()
         #//*[@id="landingImage"]//*[@id="landingImage"]//*[@id="imgTagWrapperId"]
         picture = response.xpath("//div[@class='imgTagWrapper']/img/@data-a-dynamic-image").extract()
-        print("**picture url: ", response.xpath("//div[@class='imgTagWrapper']/img/@data-a-dynamic-image").extract())
 
         item = AmazonItem()
         item['title'] = title
@@ -57,13 +56,13 @@ class AmazonSpider(scrapy.Spider):
         item['star'] = star
         item['url'] = response.url
         item['description'] = description
-        item['Product_description'] = Product_description
+        item['Product_description'] = product_description
         item['details'] = details
         item['details1'] = details1
         item['picture'] = picture
         yield item
 
-    def parse4(self, response):#casual
+    def parse4(self, response):  # casual
         print('test4')
 
         urls = response.xpath("//a[@class ='a-link-normal s-access-detail-page s-overflow-ellipsis s-color-twister-title-link a-text-normal']/@href").extract()
@@ -76,29 +75,29 @@ class AmazonSpider(scrapy.Spider):
             yield scrapy.Request("https://www.amazon.com"+next_page[0], dont_filter=True, callback=self.parse4)
         pass
 
-#     def parse3(self, response):#casual
-#         print('test3')
-# # //*[@id="leftNav"]/ul[1]/ul/li/span/ul/div/li[2]/span/ul/div/li[2]/span/a/span
-#         urls = response.xpath("// ul / ul / li / span / ul / div // li/ span / ul / div // li / span / ul / div // li / span // a[@class ='a-link-normal s-ref-text-link']/@href").extract()
-#         # urls = response.xpath("//*[@id='leftNav']/ul[1]/ul/li/span/ul/div/li[2]/span/ul/div/li[2]/span//a/@href").extract()
-#         print("test3**", urls)
-#         for u in urls:
-#             print("********", response.xpath("// ul / ul / li / span / ul / div // li/ span / ul / div // li / span / ul / div // li / span // a[@class ='a-link-normal s-ref-text-link']/span/text()").extract())
-#             url = "https://www.amazon.com" + u
-#             yield scrapy.Request(url, dont_filter=True, callback=self.parse4)
-#             # break
-#         pass
-#     def parse2(self, response):#dresses
-#         print('test2')
-#         urls = response.xpath("//ul[@class='a-unordered-list a-nostyle a-vertical s-ref-indent-one']//a[@class ='a-link-normal s-ref-text-link']/@href").extract()
-#         for u in urls:
-#             url="https://www.amazon.com"+u
-#             yield scrapy.Request(url, dont_filter=True, callback=self.parse3)
-#             # break
-#         pass
+    def parse3(self, response):#casual
+        print('test3')
+# //*[@id="leftNav"]/ul[1]/ul/li/span/ul/div/li[2]/span/ul/div/li[2]/span/a/span
+        urls = response.xpath("// ul / ul / li / span / ul / div // li/ span / ul / div // li / span / ul / div // li / span // a[@class ='a-link-normal s-ref-text-link']/@href").extract()
+        # urls = response.xpath("//*[@id='leftNav']/ul[1]/ul/li/span/ul/div/li[2]/span/ul/div/li[2]/span//a/@href").extract()
+        print("test3**", urls)
+        for u in urls:
+            print("********", response.xpath("// ul / ul / li / span / ul / div // li/ span / ul / div // li / span / ul / div // li / span // a[@class ='a-link-normal s-ref-text-link']/span/text()").extract())
+            url = "https://www.amazon.com" + u
+            yield scrapy.Request(url, dont_filter=True, callback=self.parse4)
+            # break
+        pass
 
+    def parse2(self, response):  # dresses
+        print('test2')
+        urls = response.xpath("//ul[@class='a-unordered-list a-nostyle a-vertical s-ref-indent-one']//a[@class ='a-link-normal s-ref-text-link']/@href").extract()
+        for u in urls:
+            url="https://www.amazon.com"+u
+            yield scrapy.Request(url, dont_filter=True, callback=self.parse3)
+            # break
+        pass
 
-    def parse(self, response):#clothing
+    def parse(self, response):  # clothing
         print('test1')
 
         urls = response.xpath(" // ul // li //a[@class='a-link-normal s-ref-text-link']/@href").extract()
@@ -106,6 +105,6 @@ class AmazonSpider(scrapy.Spider):
         for u in urls:
             url = "https://www.amazon.com" + u
             print(url)
-            yield scrapy.Request(url,dont_filter=True, callback=self.parse4)
+            yield scrapy.Request(url, dont_filter=True, callback=self.parse2)
             # break
         pass

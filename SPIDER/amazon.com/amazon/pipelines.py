@@ -8,11 +8,11 @@
 import json
 import codecs
 
-cate = 'Baby'
-#cate = 'Mens'
+# cate = 'Baby'
+# cate = 'Mens'
 # cate = 'Womens'
 # cate = 'Girls'
-# cate = 'Boys'
+cate = 'Boys'
 
 class AmazonPipeline(object):
     def __init__(self):

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Database.models import Test, Contact, Tag, Product
+from Database.models import Contact, Tag, Product, User_1, UserProd
 
 
 # Register your models here.
@@ -24,4 +24,4 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Contact, ContactAdmin)
-admin.site.register([Test, Product])
+admin.site.register([Product, User_1, UserProd])

@@ -6,7 +6,7 @@ The progress of indexing:
     4 Get positional information
     5 Combine the sorted results of each part, and finally write them back to disk
 
-@author: Darren
+@author: Daren, Siqi, Sibei
 """
 
 import os

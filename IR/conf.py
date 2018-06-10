@@ -21,54 +21,56 @@ doc_length_path = "./input/index_data/doc_length"
 
 fileid_path = "./input/index_data/fileid.txt"
 
-datafile2id = {"bestseller": 1}  # use this to generate doc_id
-id2datafile = {"1": "bestseller"}
+datafile2id = {"bestseller": 1, "ClothingShoesJewelry": 2}  # use this to generate doc_id
+id2datafile = {"1": "bestseller", "2": "ClothingShoesJewelry"}
 
 magnitude = 100000000
 
 cat2id = {
-    "Tools & Home Improvement": 1,
-    "Books": 2,
-    "Software": 3,
-    "Arts, Crafts & Sewing": 4,
-    "Grocery & Gourmet Food": 5,
-    "Beauty & Personal Care": 6,
-    "Appliances": 7,
-    "Musical Instruments": 8,
-    "Kindle Store": 9,
-    "Patio, Lawn & Garden": 10,
-    "Home & Kitchen": 11,
-    "CDs & Vinyl": 12,
-    "Entertainment Collectibles": 13,
-    "Apps & Games": 14,
-    "Sports & Outdoors": 15,
-    "Clothing, Shoes & Jewelry": 16,
-    "Office Products": 17,
-    "Computers & Accessories": 18,
-    "Amazon Launchpad": 19,
-    "Pet Supplies": 20,
-    "Movies & TV": 21,
-    "Kitchen & Dining": 22,
-    "Health & Household": 23,
-    "Gift Cards": 24,
-    "Electronics": 25,
-    "Industrial & Scientific": 26,
-    "Magazine Subscriptions": 27,
-    "Toys & Games": 28,
-    "Amazon Devices & Accessories": 29,
-    "Digital Music": 30,
-    "Cell Phones & Accessories": 31,
-    "Sports Collectibles": 32,
-    "Baby": 33,
-    "Automotive": 34,
-    "Camera & Photo": 35,
-    "Video Games": 36}
+    "Amazon Launchpad": 1,
+    "Computers & Accessories": 2,
+    "CDs & Vinyl": 3,
+    "Sports & Outdoors": 4,
+    "Apps & Games": 5,
+    "Kitchen & Dining": 6,
+    "Clothing, Shoes & Jewelry": 7,
+    "Health & Household": 8,
+    "Camera & Photo": 9,
+    "Kindle Store": 10,
+    "Office Products": 11,
+    "Books": 12,
+    "Amazon Devices & Accessories": 13,
+    "Entertainment Collectibles": 14,
+    "Movies & TV": 15,
+    "Patio, Lawn & Garden": 16,
+    "Appliances": 17,
+    "Video Games": 18,
+    "Grocery & Gourmet Food": 19,
+    "Automotive": 20,
+    "Baby": 21,
+    "Musical Instruments": 22,
+    "Arts, Crafts & Sewing": 23,
+    "Pet Supplies": 24,
+    "Back to results": 25,
+    "Beauty & Personal Care": 26,
+    "Industrial & Scientific": 27,
+    "Sports Collectibles": 28,
+    "Digital Music": 29,
+    "Magazine Subscriptions": 30,
+    "Electronics": 31,
+    "Cell Phones & Accessories": 32,
+    "Home & Kitchen": 33,
+    "Gift Cards": 34,
+    "Tools & Home Improvement": 35,
+    "Toys & Games": 36,
+    "Software": 37
+    }
 
 if __name__ == '__main__':
     cat_arr = set()
     doc_files = os.listdir(data_path)
     for filename in doc_files:
-        with open(data_path + filename) as input_file:
+        with open(data_path + filename, "r") as input_file:
             for line in input_file.readlines():
                 obj = json.loads(line.strip())
                 cat = obj["cat"]
@@ -80,10 +82,10 @@ if __name__ == '__main__':
         count += 1
 
     out_file_arr = []
-    for i in range(1, 37):
+    for i in range(1, len(cat2id) + 1):
         out_file_arr.append(open(data_cat_path + str(i), "w"))
     for filename in doc_files:
-        with open(data_path + filename) as input_file:
+        with open(data_path + filename, "r") as input_file:
             for line in input_file.readlines():
                 obj = json.loads(line.strip())
                 cat = obj["cat"]["1"]

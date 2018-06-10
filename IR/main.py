@@ -18,7 +18,7 @@ if __name__ == '__main__':
     my_index.load_index_file()
     print("Get index successfully.")
 
-    search_word = ["china"]
+    search_word = ["boy"]
     print("search: ", search_word)
     stemmer = nltk.stem.PorterStemmer()
     search_word = [stemmer.stem(re.sub(conf.clean_rule, "", w)) for w in search_word]
@@ -33,7 +33,8 @@ if __name__ == '__main__':
         print("No query word exists!")
         exit(-2)
     search = Search(index_arr)
-    result = search.cluster_extend(my_index.D, 40, my_index.doc_length)  # change search algorithm here
+    # result = search.cluster_extend(my_index.D, 40, my_index.doc_length)  # change search algorithm here
+    result = search.star_arrange(my_index.D, 40, my_index.doc_length)  # change search algorithm here
     print(result)
 
     count = 0
