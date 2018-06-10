@@ -12,17 +12,17 @@ https://pan.baidu.com/s/1jWJ9FVVLAHSJ5BoBCFtyYA
 ### 目的：
 
 > 1. 系统能够为一个文本集合创建带有位置信息的倒排索引。
-> 
-> 2. 系统能够根据单个词语搜索相应的文件，支持短语（包含两个或多个单词）查询，能够对搜索到的文件与查询语句之间的关联度进行分析与排序，并按照关联度排序 （降序）显示搜索到的文件。 ‘
-> 
-> 3.系统能够支持一些更高级的用户交互功能。
+
+> 2. 系统能够根据单个词语搜索相应的文件，支持短语（包含两个或多个单词）查询，能够对搜索到的文件与查询语句之间的关联度进行分析与排序，并按照关联度排序 （降序）显示搜索到的文件。 
+> 3. 系统能够支持一些更高级的用户交互功能。
 > 
 > 4. 用户交互界面：  
 >  - 让用户指定需索引的文件目录
 >  - 让用户输入搜索内容
 >  - 显示搜索到的文件名
->  
+
 > 5. 其他能够提升索引与搜索质量的功能。
+
 
 
 ### 步骤：
@@ -350,9 +350,64 @@ F1值：F=2PR/(P+R)
 
 Web应用框架使用了Django
 
-Django采用了MVC的软件设计模式，即模型M，视图V和控制器C，是一个开放源代码的Web应用框架，由Python写成。
+Django采用了MVC的软件设计模式，即模型M，视图V和控制器C，是一个开放源代码的Web应用框架，由Python写成。其融合了数据库、html模板、web服务器等多个模块，适合于作为我们UI的服务端。
 </p>相关文档在： 
 **https://docs.djangoproject.com/en/1.11**
+
+### 数据库系统
+
+主要定义了三个表：Product、User、UserProd。
+
+其中 **Product** 主要存放商品的详细信息，包括名称、url、图片、价格等。 **User** 存放注册用户的信息，而 **UserWord** 存放的是用户搜索过哪些词语，这个信息可以用于协同过滤推荐程序。
+
+	Product：
+		P_id = models.IntegerField(null=False)
+    	title = models.TextField(null=False)
+    	url = models.URLField(null=False)
+    	photo = models.URLField(null=True)
+    	category = models.TextField(null=True)
+    	price = models.CharField(max_length=20, null=True)
+    	star = models.CharField(max_length=20, null=True)
+    	description = models.TextField(null=True)
+    	details = models.TextField(null=True)
+	
+	User：
+		U_id = models.IntegerField(null=False)
+    	Sex = models.CharField(max_length=10, null=False)
+    	first_name = models.CharField(max_length=20, null=False)
+    	last_name = models.CharField(max_length=20, null=False)
+	    Password = models.CharField(max_length=20, null=False)
+    	Birthday = models.TimeField(null=False)
+    	company = models.CharField(max_length=20, null=False)
+    	Adress = models.CharField(max_length=20, null=False)
+    	Adress2 = models.CharField(max_length=20, null=True)
+    	city = models.CharField(max_length=20, null=False)
+    	state = models.CharField(max_length=20, null=False)
+    	Zip = models.CharField(max_length=20, null=False)
+    	country = models.CharField(max_length=20, null=False)
+    	aditionalInfo = models.TextField(null=True)
+    	phone = models.IntegerField(null=False)
+    	mobile = models.IntegerField(null=False)
+	
+	UserWord：
+		Email = models.IntegerField(null=False)
+    	Word = models.CharField(max_length=20, null=False)
+
+### 界面说明
+
+1、登陆界面如下，在其中输入你的搜索信息，如果找不到任何商品则还会停留在此页面。
+
+![](index_page.png)
+
+2、搜索结果如下图，会显示三个算法得到的搜索结果。
+
+如果单词拼写错误，则会自动进行纠错并提醒用户，例如下图中输入了 boy's shirrt，系统会询问用户是否在查询 boys shirt。
+
+![](search_page.png)
+
+3、此外还有登陆界面、注册界面、历史搜索界面、后台管理界面等。
+
+## Django的简单说明
 
 ### 安装Django
 
