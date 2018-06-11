@@ -254,8 +254,19 @@ tf-idf是常用的词权重的计算方法
 
 代码在search.py.Search.star_arrange
 
-### 
+### 基于同义词或者近义词对查询进行扩展
+用户在查询中可能会遇到一些问题，比如：
 
+ - 根据关键词返回的结果项的数目并不能达到要求，需要进行结果扩展
+ - 无法获得描述相似的物品
+
+为了解决上述的问题我们运用了wordnet来引用同义词扩展结果：
+
+1. 首先判断结果是否是大于k的（初始k设为5）
+2. 若结果小于k，则需要扩展.
+3. 通过对每个关键词的不同意义的同义词搜索扩展结果
+
+代码在test.py
 ## 爬虫
 
 首先，使用scrapy模块爬取了5月15日的Amazon Best Sellers榜单，按照类别每种爬取了100个商品，并将其直接保存在了json中。
@@ -290,7 +301,53 @@ tf-idf是常用的词权重的计算方法
 		"reviewers": "355 customer reviews", 
 		"questions": "28 answered questions"
 	}
+之后我们又爬取了特定类的商品，包括 Amazon fashion、food、hardware
+Amazon fashion 的分类：
+ 	 - women
+	 	- clothing
+			- dresses
+				-casual
+				- club&night out
+				......
+			- sweaters
+			- jeanes 
+			- skirts
+			.......
+    		 - shoes
+    		 - jewelry
+		 ......
+	 - man
+    	 - girls
+    	 - boys
+    	 - baby
+	  ...
+food 的分类：
+ 	- baby foods
+	- beverages
+    	- candy
+    	- dairy
+    	- meat
+	  ...
+	
+爬取的json数据格式为：
 
+	{
+		"title": "Disney Emoji Nightshirt For Girls", 
+		"cat": 
+		{
+			"1": "Clothing, Shoes & Jewelry", 
+			"2": "Girls"
+			"3": " Clothing"
+			"4":"Sleepwear & Robes"
+			"5":" Pajama Tops"
+		}, 
+		"price": "$19.79 - $26.31", 
+		"star": "4.0 out of 5 stars", 
+		"discreption":"Genuine, Original, Authentic Disney Store, knit nightshirt..."
+		"url": "https://www.amazon.com/Disney-Emoji-Nightshirt-Girls-10449025688976/dp/B077GCPSRF"
+		"picture": "https://images-na.ssl-images-amazon.com/images/G/01/apparel/rcxgs/tile._CB211431200_.gif,[227,279]"
+		
+	}
 
 ## 信息检索系统的评价
 
