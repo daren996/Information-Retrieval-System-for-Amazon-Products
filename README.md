@@ -28,24 +28,7 @@ https://pan.baidu.com/s/1jWJ9FVVLAHSJ5BoBCFtyYA
 ### 步骤：
 
 > - 爬取数据  
-爬取amazon网站上的商品信息(名称、价格、介绍)、购买信息(购买数目、评价)等
-放置在json文件中，例如：
-
-	json
-	{
-		"id": 103000598,
-		"name": "apple iphone x, fully unlocked 5.8", 64 gb - silver",
-		"category": {"1": "Cell Phones & Accessories", "2": "Cell Phones"}
-		"price": "$1,139.00 & free shipping",
-		"information": 
-		{
-			"color": "silver", 
-			"size": "64 gb", 
-			...
-		},
-		...
-		"url": "https://www.amazon.com/gp/product/B075QN8NDJ/ref=s9_dcacsd_dcoop_bw_c_x_1_w"
-	}
+爬取amazon网站上的商品信息(名称、价格、介绍)、购买信息(购买数目、评价)等，放置在json文件中(之后会有实例)
 > 
 > - 建立数据库  
 最开始可以先将json文件当作一个简单的文本数据库  
@@ -295,7 +278,7 @@ tf-idf是常用的词权重的计算方法
 
 代码在 **search.py.Search.star_arrange**
 
-### 五、基于同义词或者近义词对查询进行扩展
+### 五、基于同义词或者近义词对查询进行扩展(原创)
 
 用户在查询中可能会遇到一些问题，比如：
 
@@ -310,7 +293,29 @@ tf-idf是常用的词权重的计算方法
 
 代码在test.py
 
-### 六、基于用户搜索记录的协同过滤推荐算法
+### 六、基于用户搜索记录的协同过滤推荐算法(原创)
+
+我们希望通过比较每个用户的搜索记录，判断用户之间的相似性，找到相似度最高的k个用户，并通过多用户比较排序搜索的词，给出推荐物品。此处只列出三个。
+
+首先我们计算用户之间的相似度：
+
+<img src="formula1.png" width="150" align=center />
+
+其中S<sub>a</sub>是用户a搜索过的词，S<sub>b</sub>是用户b搜索过的词，他们的交集表示他们共同搜索过的词，他们的并集表示他们所有搜索过的词的集合，比值代表他们的相关性。
+
+当我们对用户a进行相关用户推荐时，我们取与a相似度最大的k个用户，提取出他们的并集，即：
+
+A = S<sub>1</sub>  UNION S<sub>2</sub>  UNION S<sub>3</sub> ... UNION S<sub>k</sub>
+
+其中S<sub>i</sub>， i属于[0,k]，表示相似度最大的k个用户搜索过的单词的集合。
+
+我们对A中的单词计算用户对它的感兴趣程度：
+
+<img src="formula2.png" width="250" align=center />
+
+其中k表示相似度最大的k个用户，m表示一个搜索单词，I<sub>am</sub>表好似用户a对物体m的感兴趣程度，它由k个相似用户对它的感兴趣程度加权而得，权重是相似度w。 这里简化起见，已经搜索过的话感兴趣程度为1，I<sub>km</sub>在没有搜索的情况下为0。所以这个加权过程不会递归下去，他就是搜索过的用户的相似度w的累加。
+
+通过 I<sub>am</sub> 的排序，选择前三的搜索单词，再通过搜索算法得到product，显示在页面布局上。
 
 
 ## 爬虫
@@ -457,17 +462,34 @@ Django采用了MVC的软件设计模式，即模型M，视图V和控制器C，�
 
 ### 界面说明
 
+- 本系统支持创建用户，记录用户的相关信息和搜索物品的记录，在这里我们使用数据库存储系统。
+- 网站会提供一个用户注册页面和登陆页面，用户注册时填写申请账号，密码和有关信息，注册后成功会直接跳转到主页面的搜索页面，从这时开始，该用户就已经处于登录状态，并且所有的搜索都会存入搜索记录中。同理，用户从登陆页面登录后也是如此。
+- 我们提供用户查看搜索的历史记录的功能。
+- 我们提供页面一小部分空间展示通过相似用户推荐物品（与当前搜索无关）。
+
 1、登陆界面如下，在其中输入你的搜索信息，如果找不到任何商品则还会停留在此页面。
 
-![](index_page.png)
+<img src="index_page.png" width="700" align=center />
 
 2、搜索结果如下图，会显示三个算法得到的搜索结果。
 
 如果单词拼写错误，则会自动进行纠错并提醒用户，例如下图中输入了 boy's shirrt，系统会询问用户是否在查询 boys shirt。
 
-![](search_page.png)
+<img src="search_page.png" width="700" align=center />
 
-3、此外还有登陆界面、注册界面、历史搜索界面、后台管理界面等。
+3、注册页面
+
+<img src="registration.png" width="350" align=center />
+
+4、登陆界面
+
+<img src="sign_in.png" width="450" align=center />
+
+登陆过后显示账户。点击History Record将出现历史搜索记录。
+
+<img src="history.png" width="600" align=center />
+
+这里有简单的去重复，重复搜索的词只出现一次。
 
 ## Django的简单说明
 
@@ -679,13 +701,9 @@ ALLOWED\_HOSTS=[]改成ALLOWED_HOSTS=['\*']。
 
 2 如果因为中文无法解析的话，可以添加下述代码：
  
-
 	import sys  
 	reload(sys)
 	sys.setdefaultencoding('utf8')
-
-
-## UI设计与接口搭建
 
 
 ----------

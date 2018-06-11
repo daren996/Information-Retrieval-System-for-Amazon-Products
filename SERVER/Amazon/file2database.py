@@ -47,9 +47,10 @@ from IR.search import Search
 #             product.save()
 
 
+# 把照片等信息加进去
 filename_list = os.listdir("../../IR/input/doc_data/")
-filename_list.remove("bestseller")
-# filename_list.remove("ClothingShoesJewelry")
+# filename_list.remove("bestseller")
+filename_list.remove("ClothingShoesJewelry")
 print(filename_list)
 for filename in filename_list:
     with open("../../IR/input/doc_data/" + filename, "r") as input_file:
@@ -62,6 +63,15 @@ for filename in filename_list:
             product.save()
 
 
+# 看有没有重复
+id_arr = set()
+list = Product.objects.all()
+for i in range(len(list)):
+    P_id = list[i].P_id
+    if P_id not in id_arr:
+        id_arr.add(P_id)
+    else:
+        print(P_id)
 
 
 # list = Product.objects.all()
