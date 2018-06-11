@@ -20,5 +20,11 @@ from . import search
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', search.search_form),
-    path('search/', search.search)
+    path('search/', search.search),
+
+    path('login/', search.login),
+    path('register/', search.register),
+    path('addUser/', search.addUser),
+    path('login/', search.login),
+    path('search_history/',search.search_history)
 ]

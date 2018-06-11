@@ -123,8 +123,8 @@ class Index:
 
 if __name__ == '__main__':
     my_index = Index()
-    # my_index.gen_index()
-    # my_index.write_index_file()
-    my_index.load_index_file()
-    my_index.print_index()
+    my_index.gen_index()
+    my_index.write_index_file()
+    # my_index.load_index_file()
+    # my_index.print_index()
     print("Get index successfully.")

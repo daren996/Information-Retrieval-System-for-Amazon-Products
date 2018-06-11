@@ -11,11 +11,13 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SERVER$main.coverage" NAME="main Coverage Results" MODIFIED="1527779105138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Amazon/IR" />
-    <SUITE FILE_PATH="coverage/SERVER$file2database.coverage" NAME="file2database Coverage Results" MODIFIED="1527780697343" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Amazon" />
+    <SUITE FILE_PATH="coverage/SERVER$file2database.coverage" NAME="file2database Coverage Results" MODIFIED="1528634689932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Amazon" />
     <SUITE FILE_PATH="coverage/SERVER$test.coverage" NAME="test Coverage Results" MODIFIED="1527752373563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HelloWorld" />
+    <SUITE FILE_PATH="coverage/SERVER$conf.coverage" NAME="conf Coverage Results" MODIFIED="1528533256497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Amazon/IR" />
+    <SUITE FILE_PATH="coverage/SERVER$test__2_.coverage" NAME="test (2) Coverage Results" MODIFIED="1528533794262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Amazon" />
     <SUITE FILE_PATH="coverage/SERVER$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1527771318138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Amazon" />
-    <SUITE FILE_PATH="coverage/SERVER$manage.coverage" NAME="manage Coverage Results" MODIFIED="1527487780806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HelloWorld" />
     <SUITE FILE_PATH="coverage/SERVER$models.coverage" NAME="models Coverage Results" MODIFIED="1527750839756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HelloWorld/TestModel" />
+    <SUITE FILE_PATH="coverage/SERVER$manage.coverage" NAME="manage Coverage Results" MODIFIED="1527487780806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HelloWorld" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -40,7 +42,18 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="search.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Amazon/Amazon/search.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3814">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -56,7 +69,38 @@
       <find>STATIC_URL</find>
       <find>conf</find>
       <find>util</find>
+      <find>search_form</find>
+      <find>product</find>
+      <find>result</find>
+      <find>rlt</find>
+      <find>{% for p in product %}</find>
+      <find>p.title</find>
+      <find>ctx</find>
+      <find>222</find>
+      <find>222.00</find>
+      <find>index</find>
+      <find>logo.png</find>
+      <find>logo</find>
+      <find>camera</find>
+      <find>Latest Products</find>
+      <find>Featured Products</find>
+      <find>submit</find>
+      <find>products</find>
+      <find>product_summary</find>
+      <find>special_offer</find>
+      <find>normal</find>
+      <find>contact</find>
+      <find>product_details</find>
+      <find>register</find>
+      <find>myCarousel</find>
     </findStrings>
+    <replaceStrings>
+      <replace>'</replace>
+      <replace>{{ p.price }}</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\BPEI\Desktop\ir\SERVER\HelloWorld\TestModel\static\HelloWorld\themes\images</dir>
+    </dirStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -78,20 +122,23 @@
         <option value="$PROJECT_DIR$/HelloWorld/HelloWorld/settings.py" />
         <option value="$PROJECT_DIR$/HelloWorld/templates/index.html" />
         <option value="$PROJECT_DIR$/HelloWorld/HelloWorld/search.py" />
-        <option value="$PROJECT_DIR$/Amazon/Templates/index.html" />
-        <option value="$PROJECT_DIR$/Amazon/Database/admin.py" />
-        <option value="$PROJECT_DIR$/Amazon/test.py" />
-        <option value="$PROJECT_DIR$/Amazon/Database/models.py" />
         <option value="$PROJECT_DIR$/Amazon/Amazon/settings.py" />
-        <option value="$PROJECT_DIR$/Amazon/Amazon/urls.py" />
         <option value="$PROJECT_DIR$/Amazon/IR/main.py" />
-        <option value="$PROJECT_DIR$/Amazon/IR/index.py" />
+        <option value="$PROJECT_DIR$/Amazon/Templates/result.html" />
+        <option value="$PROJECT_DIR$/HelloWorld/templates/result.html" />
+        <option value="$PROJECT_DIR$/Amazon/__init__.py" />
         <option value="$PROJECT_DIR$/Amazon/IR/conf.py" />
+        <option value="$PROJECT_DIR$/Amazon/Templates/index.html" />
+        <option value="$PROJECT_DIR$/Amazon/test.py" />
+        <option value="$PROJECT_DIR$/Amazon/IR/index.py" />
         <option value="$PROJECT_DIR$/Amazon/IR/search.py" />
+        <option value="$PROJECT_DIR$/Amazon/Templates/register.html" />
+        <option value="$PROJECT_DIR$/Amazon/Amazon/urls.py" />
+        <option value="$PROJECT_DIR$/Amazon/Templates/search_result.html" />
+        <option value="$PROJECT_DIR$/Amazon/Database/models.py" />
+        <option value="$PROJECT_DIR$/Amazon/Database/admin.py" />
         <option value="$PROJECT_DIR$/Amazon/file2database.py" />
         <option value="$PROJECT_DIR$/Amazon/Amazon/search.py" />
-        <option value="$PROJECT_DIR$/Amazon/Templates/search_result.html" />
-        <option value="$PROJECT_DIR$/Amazon/__init__.py" />
       </list>
     </option>
   </component>
@@ -102,10 +149,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="428" />
-    <option name="y" value="-20" />
-    <option name="width" value="1346" />
-    <option name="height" value="688" />
+    <option name="x" value="-7" />
+    <option name="width" value="931" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -115,7 +161,16 @@
             <id />
           </State>
           <State>
+            <id>CSS</id>
+          </State>
+          <State>
+            <id>Probable bugsCSS</id>
+          </State>
+          <State>
             <id>Python</id>
+          </State>
+          <State>
+            <id>RELAX NG</id>
           </State>
         </expanded-state>
         <selected-state>
@@ -141,6 +196,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -157,26 +214,30 @@
               <item name="SERVER" type="b2602c69:ProjectViewProjectNode" />
               <item name="SERVER" type="462c0819:PsiDirectoryNode" />
               <item name="Amazon" type="462c0819:PsiDirectoryNode" />
-              <item name="Templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Amazon" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/SERVER" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/Amazon/Database/static" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Git\Information-Retrieval-System-for-Amazon-Products\SERVER\HelloWorld" />
       <recent name="D:\Git\Information-Retrieval-System-for-Amazon-Products\SERVER\HelloWorld\HelloWorld" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\BPEI\Desktop\ir\SERVER\Amazon\Templates" />
+      <recent name="C:\Users\BPEI\Desktop\ir\SERVER\Amazon\Database\static" />
+      <recent name="C:\Users\BPEI\Desktop\ir\SERVER\HelloWorld\TestModel\static\HelloWorld" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -192,6 +253,25 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.file2database">
+    <configuration name="conf" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Amazon/IR" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SERVER" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Amazon/IR/conf.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="file2database" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -230,25 +310,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HelloWorld" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SERVER" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HelloWorld/manage.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -268,39 +329,39 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HelloWorld" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Amazon" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SERVER" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HelloWorld/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Amazon/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.manage" />
-      <item index="1" class="java.lang.String" itemvalue="Python.test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.test (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.file2database" />
-      <item index="4" class="java.lang.String" itemvalue="Python.main" />
+      <item index="0" class="java.lang.String" itemvalue="Python.test (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Python.file2database" />
+      <item index="2" class="java.lang.String" itemvalue="Python.main" />
+      <item index="3" class="java.lang.String" itemvalue="Python.test (2)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.conf" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.file2database" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.manage" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test (2)" />
+        <item index="2" class="java.lang.String" itemvalue="Python.conf" />
+        <item index="3" class="java.lang.String" itemvalue="Python.main" />
+        <item index="4" class="java.lang.String" itemvalue="Python.test (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -324,18 +385,18 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3326087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3315734" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31847826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34347826" sideWeight="0.49583334" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17110874" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -352,38 +413,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/models.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/admin.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/hello.html" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/search_form.html" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/view.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/urls.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/settings.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/models.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/hello.html" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/testdb.py" />
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/tensorflow-gpu/Scripts/django-admin.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/tensorflow-gpu/Lib/site-packages/django/db/models/fields/related.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/tensorflow-gpu/Lib/site-packages/django/db/models/fields/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/manage.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/testdb.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/search2.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/templates/post.html" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/search_form.html" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/hello.html" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/wsgi.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/view.py" />
     <entry file="file://$PROJECT_DIR$/Amazon/Database/apps.py">
@@ -396,20 +434,12 @@
     <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/apps.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/tests.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/views.py" />
-    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/admin.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/test.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/models.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/urls.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/search.py" />
     <entry file="file://$PROJECT_DIR$/HelloWorld/HelloWorld/settings.py" />
-    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1197">
-          <caret line="57" column="40" lean-forward="false" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Amazon/Database/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-189">
@@ -417,101 +447,199 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/urls.py">
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/pretreatment.py" />
+    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/Templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/Database/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/IR/pretreatment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-201">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/IR/main.py">
+    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="18" column="36" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="18" selection-end-column="36" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/IR/util.py">
+    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/static/HelloWorld/themes/js/less.js" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/hello.html" />
+    <entry file="file://$PROJECT_DIR$/Amazon/Database/static/bootstrap/js/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/IR/conf.py">
+    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        <state relative-caret-position="542">
+          <caret line="63" column="62" lean-forward="false" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/IR/index.py">
+    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/index.html" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/result.html" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/static/HelloWorld/themes/images/logo.png" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/static/HelloWorld/themes/css/font-awesome-ie7.css" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/static/HelloWorld/themes/css/font-awesome.css" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/static/HelloWorld/themes/css/bootstrap-responsive.min.css" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/TestModel/static/HelloWorld/themes/css/base.css" />
+    <entry file="file://$PROJECT_DIR$/HelloWorld/templates/search_form.html" />
+    <entry file="file://$PROJECT_DIR$/Amazon/Templates/result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state relative-caret-position="-1035">
+          <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/IR/search.py">
+    <entry file="file://$PROJECT_DIR$/Amazon/Templates/products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/file2database.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="48" column="29" lean-forward="false" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/Database/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="30" column="9" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Amazon/Templates/search_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Amazon/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="42">
+          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/main.py" />
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+          <folding>
+            <element signature="e#22#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/corrector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="25" column="14" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/Templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="61" column="34" lean-forward="true" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/Templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="41" column="46" lean-forward="false" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#630#662#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/Database/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/file2database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2050">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/IR/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-882">
+          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/Templates/search_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-380">
+          <caret line="193" column="41" lean-forward="false" selection-start-line="193" selection-start-column="41" selection-end-line="193" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/Database/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="68" column="38" lean-forward="false" selection-start-line="67" selection-start-column="4" selection-end-line="68" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Amazon/Amazon/search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3814">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>

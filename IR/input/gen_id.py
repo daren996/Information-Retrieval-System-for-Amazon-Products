@@ -10,10 +10,10 @@ import conf
 # generate id for every doc
 dir_path = "./doc_data/"
 # dir_path = "./data_origin/"
-D = 0
 doc_files = os.listdir(dir_path)
 print(doc_files)
 for filename in doc_files:
+    D = 0
     out_file = open(dir_path + filename+"_new", "w")
     with open(dir_path + filename, "r") as input_file:
         for line in input_file.readlines():

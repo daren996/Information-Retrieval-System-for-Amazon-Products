@@ -126,6 +126,22 @@ class Search:
         result = result + [r[0] for r in result_sorted]
         return result[0:min(len(result), k)]
 
+    # Based on star level
+    def star_arrange(self, D, k, doc_length):
+        result = self.cluster_extend(D, 99, doc_length)
+        doc2star = {}
+        for doc_id in result:
+            line = linecache.getline(conf.data_path + conf.id2datafile[str(doc_id)[0]], doc_id % conf.magnitude)
+            json_obj = json.loads(line.strip())
+            if len(json_obj["star"]) == 0:
+                star = 0
+            else:
+                star = float(json_obj["star"][0].split(" ")[0])
+            doc2star[doc_id] = star
+        doc_sorted = sorted(doc2star.items(), key=operator.itemgetter(1), reverse=True)
+        result = [doc[0] for doc in doc_sorted[0:k]]
+        return result
+
     # write your algorithm here
     def other_method(self):
         pass

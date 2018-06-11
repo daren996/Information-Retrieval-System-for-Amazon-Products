@@ -51,6 +51,12 @@ def pre_process():
                 json_obj['name'] = temp_text
             else:
                 continue
+            if 'price' not in json_obj:
+                json_obj['price'] = ""
+            if 'picture' not in json_obj:
+                json_obj['picture'] = []
+            if 'star' not in json_obj:
+                json_obj['star'] = []
             json_str = json.dumps(json_obj)
             file_out.write(json_str + '\n')
         file_in.close()
