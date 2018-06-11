@@ -303,7 +303,8 @@ tf-idf是常用的词权重的计算方法
 	}
 之后我们又爬取了特定类的商品，包括 Amazon fashion、food、hardware
 Amazon fashion 的分类：
- 	 - women
+ 	
+	- women
 	 	- clothing
 			- dresses
 				-casual
@@ -322,7 +323,8 @@ Amazon fashion 的分类：
     	 - baby
 	  ...
 food 的分类：
- 	- baby foods
+ 	
+	- baby foods
 	- beverages
     	- candy
     	- dairy
