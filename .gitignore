@@ -1,8 +1,8 @@
 # remove use : git rm -r --cached xxx
-./IR/
-./SPIDER/.dea/
-./SPIDER/amazon/
-./SPIDER/amazon.com/*.json
-./.idea/
-./__init__.py
-./IR.zip
+#./IR/
+#./SPIDER/.dea/
+#./SPIDER/amazon/
+#./SPIDER/amazon.com/*.json
+#./.idea/
+#./__init__.py
+#./IR.zip
