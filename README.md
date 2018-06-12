@@ -469,27 +469,31 @@ Django采用了MVC的软件设计模式，即模型M，视图V和控制器C，�
 
 1、登陆界面如下，在其中输入你的搜索信息，如果找不到任何商品则还会停留在此页面。
 
-<img src="index_page.png" width="700" align=center />
+<img src="index_page.png" width="600" align=center />
 
 2、搜索结果如下图，会显示三个算法得到的搜索结果。
 
 如果单词拼写错误，则会自动进行纠错并提醒用户，例如下图中输入了 boy's shirrt，系统会询问用户是否在查询 boys shirt。
 
-<img src="search_page.png" width="700" align=center />
+<img src="search_page.png" width="630" align=center />
 
 3、注册页面
 
-<img src="registration.png" width="350" align=center />
+<img src="registration.png" width="340" align=center />
 
 4、登陆界面
 
-<img src="sign_in.png" width="450" align=center />
+<img src="sign_in.png" width="400" align=center />
 
 登陆过后显示账户。点击History Record将出现历史搜索记录。
 
-<img src="history.png" width="600" align=center />
+<img src="history.png" width="450" align=center />
 
 这里有简单的去重复，重复搜索的词只出现一次。
+
+5、用户推荐
+
+<img src="recommend.png" width="200" align=center />
 
 ## Django的简单说明
 

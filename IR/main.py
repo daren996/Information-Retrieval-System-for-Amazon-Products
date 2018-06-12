@@ -18,7 +18,7 @@ if __name__ == '__main__':
     my_index.load_index_file()
     print("Get index successfully.")
 
-    search_word = ["boy"]
+    search_word = ["food"]
     print("search: ", search_word)
     stemmer = nltk.stem.PorterStemmer()
     search_word = [stemmer.stem(re.sub(conf.clean_rule, "", w)) for w in search_word]

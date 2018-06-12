@@ -11,6 +11,8 @@ import conf
 dir_path = "./doc_data/"
 # dir_path = "./data_origin/"
 doc_files = os.listdir(dir_path)
+doc_files.remove("bestseller")
+doc_files.remove("ClothingShoesJewelry")
 print(doc_files)
 for filename in doc_files:
     D = 0

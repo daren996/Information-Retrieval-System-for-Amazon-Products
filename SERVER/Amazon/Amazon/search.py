@@ -12,6 +12,7 @@ import IR.conf
 import IR.corrector
 from IR.index import Index
 from IR.search import Search
+from nltk.corpus import wordnet as wn
 
 
 def register(request):
@@ -20,6 +21,35 @@ def register(request):
 
 log_in = False
 log_num = 0
+
+
+def recommend():
+    if log_in:
+        set_recommended = getItem(log_num)
+        NumUser = User_1.objects.all()
+        max = 0
+        BestLikeEmail = 0
+        set_cha = []
+        for i in range(0, len(NumUser)):
+            if NumUser[i].Email != log_num:
+                set_other = getItem(NumUser[i].Email)
+                set_Inter = [val for val in set_recommended if val in set_other]
+                set_Union = list(set(set_recommended).union(set(set_other)))
+
+                if len(set_Union) != 0:
+                    if len(set_Inter) / len(set_Union) > max:
+                        max = len(set_Inter) / len(set_Union)
+                        BestLikeEmail = NumUser[i].Email
+                        set_cha = list(set(set_other).difference(set(set_recommended)))
+        return set_cha
+
+
+def getItem(a):
+    userprod = UserProd.objects.filter(Email=a)
+    new_object = []
+    for i in range(0, len(userprod)):
+        new_object.append(userprod[i].Item)
+    return new_object
 
 
 def search_function(search_words, fun="cluster"):
@@ -109,15 +139,26 @@ def search_history(request):
     global log_in
     global log_num
     ctx = {}
-    if (log_in):
+    if log_in:
+        ctx['rlt'] = log_num
         request.encoding = 'utf-8'
         ctx["history"] = []
         userprod = UserProd.objects.filter(Email=log_num)
         for r in range(0, min(9, len(userprod))):
             ctx["history"].append(userprod[r].Item)
     else:
+        ctx['rlt'] = "You are not logged in yet!"
         ctx = {"holder": "You are not logged in yet!"}
         return render(request, 'notLogin.html', ctx)
+
+    ctx["product5"] = []
+    result3_word = recommend()
+    if search_function(result3_word, "star") == -2:
+        result3 = []
+    else:
+        result3 = search_function(result3_word, "star")
+    for r in result3[0:3]:
+        ctx["product5"].append(get_dic(r))
     return render(request, 'UserPage.html', ctx)
 
 
@@ -146,10 +187,10 @@ def login(request):
     global log_num
     log_in = True
     user = User_1.objects.filter(Email=request.GET['Email'])
-    if (len(user) == 0):
+    if len(user) == 0:
         ctx = {"holder": "This email has not been registered!"}
         return render_to_response('notLogin.html', ctx)
-    elif (user[0].Password != request.GET['Password']):
+    elif user[0].Password != request.GET['Password']:
         ctx = {"holder": "Your password is wrong!"}
         return render_to_response('notLogin.html', ctx)
     log_num = user[0].Email
@@ -160,22 +201,28 @@ def login(request):
 def search(request):
     ctx = {}
     request.encoding = 'utf-8'
-    # ctx['id'] = 长度.objects.all()[0].P_id
     if 'q' in request.GET:
-        if (log_in):
+        if log_in:
+            IsDinstin = False
             userprod_1 = UserProd.objects.filter(Email=log_num)
-            if (len(userprod_1) == 0):
+            ctx['rlt'] = log_num
+            if len(userprod_1) == 0:
                 userprod = UserProd(Email=log_num, Item=request.GET['q'])
                 userprod.save()
             else:
                 for i in range(0, len(userprod_1)):
-                    if (userprod_1[i].Item != request.GET['q']):
-                        userprod = UserProd(Email=log_num, Item=request.GET['q'])
-                        userprod.save()
-                        break
-                    else:
+                    if userprod_1[i].Item != request.GET['q']:
                         continue
-        ctx['rlt'] = '你搜索的内容为: ' + request.GET['q']
+                    else:
+                        IsDinstin = True
+                        break
+
+                if not IsDinstin:
+                    userprod = UserProd(Email=log_num, Item=request.GET['q'])
+                    userprod.save()
+        else:
+            ctx['rlt'] = "You are not logged in yet!"
+        ctx['qlt'] = '你搜索的内容为: ' + request.GET['q']
         search_words_ori = request.GET['q'].split(" ")
         search_words = [IR.corrector.correction(word) for word in search_words_ori]  # corrector for word
         is_corrected = False
@@ -190,7 +237,6 @@ def search(request):
         if search_function(search_words, "star") == -2:
             return render_to_response('index.html', {"holder": "Can't get anything. Please search again."})
         result1 = search_function(search_words, "star")
-        # result2 = search_function(search_words)
         ctx["product0"] = []
         ctx["product1"] = []
         ctx["product2"] = []
@@ -208,10 +254,24 @@ def search(request):
             ctx["product3"].append(get_dic(r))
         for r in result2[12:16]:
             ctx["product4"].append(get_dic(r))
-        # result3 = search_function(search_words, "recommend")
-        result3 = result2[16:]
-        for r in result3[16:19]:
-            ctx["product5"].append(get_dic(r))
+
+        search_words2 = []
+        for w in search_words_ori:
+            w1 = wn.synsets(w)
+            for w3 in w1:
+                for w2 in w3.lemma_names():
+                    search_words2.append(w2)
+        if len(search_words2) > len(search_words):
+            search_words2 = list(set(search_words2) - set(search_words))
+        print(search_words_ori, search_words2)
+        search_words_recommend = [IR.corrector.correction(word) for word in search_words2]  # corrector for word
+        result3 = search_function(search_words_recommend, "star")
+        if result3 != -2:
+            for r in result3[0:3]:
+                ctx["product5"].append(get_dic(r))
+        else:
+            for r in result2[16:19]:
+                ctx["product5"].append(get_dic(r))
     else:
-        ctx['rlt'] = '你提交了空表单'
+        ctx['qlt'] = '你提交了空表单'
     return render(request, 'search_result.html', ctx)

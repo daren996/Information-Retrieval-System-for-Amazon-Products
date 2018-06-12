@@ -20,7 +20,7 @@ from IR.search import Search
 
 
 
-
+# 把json文件中的数据导入数据库中
 # filename_list = os.listdir("../../IR/input/doc_data/")
 # filename_list.remove("bestseller")
 # filename_list.remove("ClothingShoesJewelry")
@@ -37,41 +37,53 @@ from IR.search import Search
 #             cat_str = cat_str.strip()
 #             name = obj["name_ori"]
 #             P_id = obj["id"]
+#             if P_id % 100 == 0:
+#                 print(filename, P_id, P_id % 1000000 / 32654)
 #             product = Product(P_id=P_id, title=name, url=url, category=cat_str)
 #             if len(obj["picture"]) > 0:
 #                 product.photo = obj["picture"][0]
 #             if len(obj["star"]) > 0:
-#                 product.star = obj["star"][0]
+#                 product.star = obj["star"][0] if type(obj["star"]) == list else obj["star"]
 #             if obj["price"] != "":
 #                 product.price = obj["price"]
 #             product.save()
 
 
 # 把照片等信息加进去
-filename_list = os.listdir("../../IR/input/doc_data/")
+# filename_list = os.listdir("../../IR/input/doc_data/")
 # filename_list.remove("bestseller")
-filename_list.remove("ClothingShoesJewelry")
-print(filename_list)
-for filename in filename_list:
-    with open("../../IR/input/doc_data/" + filename, "r") as input_file:
-        for line in input_file.readlines():
-            obj = json.loads(line.strip())
-            P_id = obj["id"]
-            product = Product.objects.get(P_id=P_id)
-            if len(obj["picture"]) > 0:
-                product.photo = obj["picture"][0]
-            product.save()
+# filename_list.remove("ClothingShoesJewelry")
+# filename_list.remove("FoodHardware")
+# print(filename_list)
+# for filename in filename_list:
+#     with open("../../IR/input/doc_data/" + filename, "r") as input_file:
+#         for line in input_file.readlines():
+#             obj = json.loads(line.strip())
+#             P_id = obj["id"]
+#             if P_id % 100 == 0:
+#                 print(filename, P_id, P_id % 1000000 / 32654)
+#             product = Product.objects.get(P_id=P_id)
+#             if len(obj["picture"]) > 0:
+#                 product.photo = obj["picture"][0]
+#             if obj["price"] != "":
+#                 product.price = obj["price"]
+#             if len(obj["star"]) > 0:
+#                 product.star = obj["star"][0] if type(obj["star"]) == list else obj["star"]
+#             print(product.star)
+#             product.save()
 
 
 # 看有没有重复
-id_arr = set()
-list = Product.objects.all()
-for i in range(len(list)):
-    P_id = list[i].P_id
-    if P_id not in id_arr:
-        id_arr.add(P_id)
-    else:
-        print(P_id)
+# id_arr = set()
+# list = Product.objects.all()
+# print(len(list))
+# for i in range(len(list)):
+#     P_id = list[i].P_id
+#     if P_id not in id_arr:
+#         id_arr.add(P_id)
+#     else:
+#         print("duplicate: ", P_id)
+#         list[i].delete()
 
 
 # list = Product.objects.all()
