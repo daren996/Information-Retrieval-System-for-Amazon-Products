@@ -77,6 +77,12 @@ https://pan.baidu.com/s/1jWJ9FVVLAHSJ5BoBCFtyYA
 	|   |-- models.py     # 数据库结构
 	|   |-- tests.py
 	|   |-- views.py
+	|-- Templates
+	|	|-- index.html
+	|	|...              # 一些网页HTML模板
+	|-- __init__.py
+	|-- manage.py
+	|-- db.sqlite3
 
 倒排索引表的生成、构建、写入文件、从文件读取等程序在 **IR/index.py** 中。
 
